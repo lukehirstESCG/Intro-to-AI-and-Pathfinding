@@ -10,6 +10,10 @@ public class StateMachine : MonoBehaviour
     void Start()
     {
         currentState = GetInitialState(); 
+        if (currentState != null)
+        {
+            currentState.Enter();
+        }
     }
 
     // Update is called once per frame

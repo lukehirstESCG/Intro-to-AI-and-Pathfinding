@@ -1,18 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovementSM : MonoBehaviour
+public class PlayerMovementSM : StateMachine
 {
-    // Start is called before the first frame update
-    void Start()
+    public float speed = 5f;
+    public Animator anim;
+
+    [HideInInspector]
+    public Idle idleState;
+
+    private void Awake()
     {
-        
+        idleState = new Idle(this);
     }
 
-    // Update is called once per frame
-    void Update()
+    protected override BaseState GetInitialState()
     {
-        
+        return idleState;
     }
 }
