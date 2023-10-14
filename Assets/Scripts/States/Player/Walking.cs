@@ -5,6 +5,7 @@ public class Walking : Grounded
     public Walking(PlayerMovementSM stateMachine) : base("Walking", stateMachine) { }
 
     private float horizontalInput;
+    private float verticalInput;
 
     public override void Enter()
     {
@@ -16,7 +17,9 @@ public class Walking : Grounded
     {
         base.UpdateLogic();
         horizontalInput = Input.GetAxis("Horizontal");
-        if (Mathf.Abs(horizontalInput) < Mathf.Epsilon)
+        verticalInput = Input.GetAxis("Vertical");
+
+        if (Mathf.Abs(horizontalInput) < Mathf.Epsilon && Mathf.Abs(verticalInput) < Mathf.Epsilon)
         {
             stateMachine.ChangeState(sm.idleState);
             // sm.anim.SetBool("walking", false);
@@ -26,8 +29,9 @@ public class Walking : Grounded
     public override void UpdatePhysics()
     {
         base.UpdatePhysics();
-        Vector2 vel = sm.rb.velocity;
+        Vector3 vel = sm.rb.velocity;
         vel.x = horizontalInput * ((PlayerMovementSM)stateMachine).speed;
+        vel.z = verticalInput * ((PlayerMovementSM)stateMachine).speed;
         sm.rb.velocity = vel;
     }
 }
