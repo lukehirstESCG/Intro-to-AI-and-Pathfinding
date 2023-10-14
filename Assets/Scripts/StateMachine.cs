@@ -38,7 +38,7 @@ public class StateMachine : MonoBehaviour
         currentState.Exit();
 
         currentState = newState;
-        currentState.Enter();
+        newState.Enter();
     }
 
     protected virtual BaseState GetInitialState()

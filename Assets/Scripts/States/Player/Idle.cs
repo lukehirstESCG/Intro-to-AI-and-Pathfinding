@@ -1,28 +1,29 @@
 using UnityEngine;
 
-public class Idle : BaseState
+public class Idle : Grounded
 {
-    public Idle(PlayerMovementSM sm) : base("Idle", sm) { }
+    public Idle(PlayerMovementSM stateMachine) : base("Idle", stateMachine) { }
 
     private float horizontalInput;
+    private float verticalInput;
 
     public override void Enter()
     {
         base.Enter();
-        {
-            horizontalInput = 0;
-        }
+        horizontalInput = 0f;
+        verticalInput = 0f;
     }
 
     public override void UpdateLogic()
     {
         base.UpdateLogic();
         {
-            horizontalInput = Input.GetAxisRaw("Horizontal");
+            horizontalInput = Input.GetAxis("Horizontal");
+            verticalInput = Input.GetAxis("Vertical");
             if (Mathf.Abs(horizontalInput) > Mathf.Epsilon)
             {
-                sm.ChangeState(sm.walkingState);
-                sm.anim.SetBool("walk", true);
+               stateMachine.ChangeState(sm.walkingState);
+               // sm.anim.SetBool("walk", true);
             }
         }
     }

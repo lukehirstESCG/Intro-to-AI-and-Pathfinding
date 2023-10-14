@@ -3,12 +3,12 @@ using UnityEngine;
 public class BaseState
 {
     public string name;
-    protected StateMachine sm;
+    protected StateMachine stateMachine;
 
-    public BaseState(string name, StateMachine sm)
+    public BaseState(string name, StateMachine stateMachine)
     {
         this.name = name;
-        this.sm = sm;
+        this.stateMachine = stateMachine;
     }
 
     public virtual void Enter() { }
