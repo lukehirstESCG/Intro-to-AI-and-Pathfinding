@@ -5,7 +5,10 @@ using UnityEngine;
 public class PlayerMovementSM : StateMachine
 {
     public float speed = 5f;
-    public Rigidbody rb;
+    public CharacterController advance;
+    public float rotationSpeed;
+    public Transform Player;
+    public Vector3 rotation;
     // public Animator anim;
 
     [HideInInspector]

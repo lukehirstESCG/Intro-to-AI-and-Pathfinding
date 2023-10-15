@@ -29,9 +29,12 @@ public class Walking : Grounded
     public override void UpdatePhysics()
     {
         base.UpdatePhysics();
-        Vector3 vel = sm.rb.velocity;
-        vel.x = horizontalInput * ((PlayerMovementSM)stateMachine).speed;
-        vel.z = verticalInput * ((PlayerMovementSM)stateMachine).speed;
-        sm.rb.velocity = vel;
+
+        sm.rotation = new Vector3(0, Input.GetAxis("Horizontal") * sm.rotationSpeed * Time.deltaTime, 0);
+
+        Vector3 move = new Vector3(0, 0, Input.GetAxisRaw("Vertical") * Time.deltaTime);
+        move = sm.transform.TransformDirection(move);
+        sm.advance.Move(move * sm.speed);
+        sm.transform.Rotate(sm.rotation);
     }
 }
