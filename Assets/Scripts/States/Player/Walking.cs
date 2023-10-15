@@ -2,7 +2,12 @@ using UnityEngine;
 
 public class Walking : Grounded
 {
-    public Walking(PlayerMovementSM stateMachine) : base("Walking", stateMachine) { }
+    public Walking(PlayerMovementSM stateMachine) : base("Walking", stateMachine)
+    {
+        sm = stateMachine;
+    }
+
+    private PlayerMovementSM sm;
 
     private float horizontalInput;
     private float verticalInput;
@@ -11,24 +16,26 @@ public class Walking : Grounded
     {
         base.Enter();
         horizontalInput = 0;
+        verticalInput = 0;
     }
 
     public override void UpdateLogic()
     {
         base.UpdateLogic();
-        horizontalInput = Input.GetAxis("Horizontal");
-        verticalInput = Input.GetAxis("Vertical");
 
         if (Mathf.Abs(horizontalInput) < Mathf.Epsilon && Mathf.Abs(verticalInput) < Mathf.Epsilon)
         {
             stateMachine.ChangeState(sm.idleState);
-            // sm.anim.SetBool("walking", false);
+            sm.anim.SetBool("walking", false);
         }
     }
 
     public override void UpdatePhysics()
     {
         base.UpdatePhysics();
+
+        horizontalInput = Input.GetAxis("Horizontal");
+        verticalInput = Input.GetAxis("Vertical");
 
         sm.rotation = new Vector3(0, Input.GetAxis("Horizontal") * sm.rotationSpeed * Time.deltaTime, 0);
 

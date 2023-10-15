@@ -2,7 +2,10 @@ using UnityEngine;
 
 public class enemyIdle : BaseState
 {
-    public enemyIdle(EnemyMovementSM stateMachine) : base("Idle", stateMachine) { }
+    public enemyIdle(EnemyMovementSM stateMachine) : base("Idle", stateMachine)
+    {
+        sm = stateMachine;
+    }
 
     private EnemyMovementSM sm;
 
@@ -15,7 +18,11 @@ public class enemyIdle : BaseState
     {
         base.UpdateLogic();
 
-        if (sm.enemy.transform.position == sm.target.position)
+        float closeDist = 2f;
+
+        float dist = Vector3.Distance(sm.enemy.transform.position, sm.target.position);
+
+        if (dist <= closeDist)
         {
             stateMachine.ChangeState(sm.attackingState);
 

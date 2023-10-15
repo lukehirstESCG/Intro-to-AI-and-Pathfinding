@@ -6,14 +6,14 @@ public class enemyAttacking : BaseState
 {
     private EnemyMovementSM sm;
 
-    private PlayerMovementSM psm;
-
-    public enemyAttacking(EnemyMovementSM stateMachine) : base("Attacking", stateMachine) { }
+    public enemyAttacking(EnemyMovementSM stateMachine) : base("Attacking", stateMachine)
+    {
+        sm = stateMachine;
+    }
 
     public override void Enter()
     {
         base.Enter();
-        sm.targetDistance = 0;
     }
 
     public override void UpdateLogic()
@@ -21,7 +21,7 @@ public class enemyAttacking : BaseState
         base.UpdateLogic();
 
         // If the player is more then 10 m away...
-        if (sm.targetDistance > 10)
+        if (sm.targetDist > 10)
         {
             stateMachine.ChangeState(sm.idleState);
         }
@@ -34,16 +34,19 @@ public class enemyAttacking : BaseState
         // Move the agent to the target destination.
         sm.agent.SetDestination(sm.target.position);
 
+        float distToplayer = Vector3.Distance(sm.enemy.transform.position, sm.target.position);
+
+        float closeDist = 2;
+
         // Is the enemy next to the player?
-        if (sm.enemy.transform.position == sm.target.position)
+        if (distToplayer <= closeDist)
         {
-            // Stop the agent from moving
-            sm.agent.SetDestination(sm.enemy.transform.position);
+            sm.agent.SetDestination(sm.transform.position);
 
             // Look at the player.
-            sm.enemy.transform.LookAt(psm.Player);
+            sm.enemy.transform.LookAt(sm.target);
 
-            sm.targetDistance = 0;
+            sm.targetDist = 0;
         }
     }
 }

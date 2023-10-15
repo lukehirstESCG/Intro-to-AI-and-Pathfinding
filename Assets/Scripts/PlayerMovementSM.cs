@@ -9,7 +9,7 @@ public class PlayerMovementSM : StateMachine
     public float rotationSpeed;
     public Transform Player;
     public Vector3 rotation;
-    // public Animator anim;
+    public Animator anim;
 
     [HideInInspector]
     public Idle idleState;

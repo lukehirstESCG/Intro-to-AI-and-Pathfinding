@@ -2,7 +2,12 @@ using UnityEngine;
 
 public class Idle : Grounded
 {
-    public Idle(PlayerMovementSM stateMachine) : base("Idle", stateMachine) { }
+    public Idle(PlayerMovementSM stateMachine) : base("Idle", stateMachine)
+    {
+        sm = stateMachine;
+    }
+
+    private PlayerMovementSM sm;
 
     private float horizontalInput;
     private float verticalInput;
@@ -25,7 +30,7 @@ public class Idle : Grounded
             {
                stateMachine.ChangeState(sm.walkingState);
                 Debug.Log("CHANGE STATE");
-               // sm.anim.SetBool("walk", true);
+               sm.anim.SetBool("walk", true);
             }
         }
     }

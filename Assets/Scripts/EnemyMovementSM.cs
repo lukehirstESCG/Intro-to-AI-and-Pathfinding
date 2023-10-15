@@ -10,7 +10,7 @@ public class EnemyMovementSM : StateMachine
     public Transform enemy;
     public Animator anim;
     public NavMeshAgent agent;
-    public int targetDistance;
+    public float targetDist;
 
     [HideInInspector]
     public enemyIdle idleState;
