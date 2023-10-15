@@ -182,24 +182,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1253013051146282, guid: f018c9b8a16f9c3449b1c025f1a66ce4, type: 3}
   m_PrefabInstance: {fileID: 1101403643}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &221103159
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 221103153}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dfdfe33b789048f4aa3f5fc9de515144, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 5
-  advance: {fileID: 221103160}
-  rotationSpeed: 0
-  Player: {fileID: 221103163}
-  rotation: {x: 0, y: 0, z: 0}
-  anim: {fileID: 221103162}
 --- !u!143 &221103160
 CharacterController:
   m_ObjectHideFlags: 0
@@ -226,16 +208,28 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1.02, z: 0}
---- !u!95 &221103162 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 95455848339679364, guid: f018c9b8a16f9c3449b1c025f1a66ce4, type: 3}
-  m_PrefabInstance: {fileID: 1101403643}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &221103163 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4807772044541664, guid: f018c9b8a16f9c3449b1c025f1a66ce4, type: 3}
   m_PrefabInstance: {fileID: 1101403643}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &221103164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 221103153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebf7fba7abf61084695f096aae2a12ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0
+  rotationSpeed: 0
+  cam: {fileID: 963194228}
+  Player: {fileID: 221103163}
+  sm: {fileID: 0}
 --- !u!1 &262610187 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1668188202801692, guid: 7e6e29f21a00d5f499e21eb93d6fabaa, type: 3}
@@ -308,6 +302,7 @@ MonoBehaviour:
   anim: {fileID: 262610191}
   agent: {fileID: 262610189}
   targetDist: 0
+  esm: {fileID: 0}
 --- !u!1001 &270236118
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1724,10 +1719,10 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1253013051146282, guid: f018c9b8a16f9c3449b1c025f1a66ce4, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 221103159}
+      addedObject: {fileID: 221103160}
     - targetCorrespondingSourceObject: {fileID: 1253013051146282, guid: f018c9b8a16f9c3449b1c025f1a66ce4, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 221103160}
+      addedObject: {fileID: 221103164}
   m_SourcePrefab: {fileID: 100100000, guid: f018c9b8a16f9c3449b1c025f1a66ce4, type: 3}
 --- !u!1 &1119018549
 GameObject:

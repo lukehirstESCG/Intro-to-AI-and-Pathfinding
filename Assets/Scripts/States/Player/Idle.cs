@@ -1,37 +1,37 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class Idle : Grounded
+public class Idle : BaseState
 {
-    public Idle(PlayerMovementSM stateMachine) : base("Idle", stateMachine)
+    public Idle(PlayerMovement player, StateMachine sm) : base(player, sm)
     {
-        sm = stateMachine;
     }
-
-    private PlayerMovementSM sm;
-
-    private float horizontalInput;
-    private float verticalInput;
 
     public override void Enter()
     {
         base.Enter();
-        horizontalInput = 0f;
-        verticalInput = 0;
+    }
+
+    public override void Exit()
+    {
+        base.Exit();
+    }
+
+    public override void HandleInput()
+    {
+        base.HandleInput();
     }
 
     public override void UpdateLogic()
     {
+        player.Walk();
+
         base.UpdateLogic();
-        {
-            horizontalInput = Input.GetAxis("Horizontal");
-            verticalInput = Input.GetAxis("Vertical");
-            Debug.Log("KEY PRESSED");
-            if (Mathf.Abs(horizontalInput) > Mathf.Epsilon && Mathf.Abs(verticalInput) > Mathf.Epsilon)
-            {
-               stateMachine.ChangeState(sm.walkingState);
-                Debug.Log("CHANGE STATE");
-               sm.anim.SetBool("walk", true);
-            }
-        }
+    }
+
+    public override void UpdatePhysics()
+    {
+        base.UpdatePhysics();
     }
 }

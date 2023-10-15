@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyMovementSM : StateMachine
+public class EnemyMovementSM : MonoBehaviour
 {
     public Transform target;
     public Transform enemy;
@@ -12,19 +12,34 @@ public class EnemyMovementSM : StateMachine
     public NavMeshAgent agent;
     public float targetDist;
 
-    [HideInInspector]
-    public enemyIdle idleState;
-    [HideInInspector]
-    public enemyAttacking attackingState;
+    public enemyIdle enemyIdleState;
+    public enemyAttacking enemyAttackState;
 
-    private void Awake()
+    public EnemyStateMachine esm;
+
+    public void Start()
     {
-        idleState = new enemyIdle(this);
-        attackingState = new enemyAttacking(this);
+        esm = gameObject.AddComponent<EnemyStateMachine>();
+
+        enemyIdleState = new enemyIdle(this, esm);
+        enemyAttackState = new enemyAttacking(this, esm);
     }
 
-    protected override BaseState GetInitialState()
+    public void Update()
     {
-        return idleState;
+        ChasePlayer();
+        AttackPlayer();
+    }
+
+    public void ChasePlayer()
+    {
+        agent.SetDestination(target.position);
+    }
+
+    public void AttackPlayer()
+    {
+        agent.SetDestination(transform.position);
+
+        transform.LookAt(target);
     }
 }
