@@ -23,7 +23,6 @@ public class Walking : BaseState
 
     public override void UpdateLogic()
     {
-        player.Walk();
         base.UpdateLogic();
     }
 

@@ -26,7 +26,6 @@ public class Idle : BaseState
     public override void UpdateLogic()
     {
         player.Walk();
-
         base.UpdateLogic();
     }
 

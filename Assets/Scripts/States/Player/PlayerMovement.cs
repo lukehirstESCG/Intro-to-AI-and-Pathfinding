@@ -24,11 +24,16 @@ public class PlayerMovement : MonoBehaviour
 
         idleState = new Idle(this, sm);
         walkingState = new Walking(this, sm);
+
+        sm.Init(idleState);
     }
 
     private void Update()
     {
         Walk();
+
+        sm.CurrentState.HandleInput();
+        sm.CurrentState.UpdateLogic();
     }
 
     public void Walk()
