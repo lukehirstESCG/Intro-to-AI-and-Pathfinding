@@ -1,34 +1,32 @@
 using UnityEngine;
 
-public class enemyIdle : EnemyBaseState
+public class enemyIdle : BaseState
 {
-    public enemyIdle(EnemyMovementSM enemy, EnemyStateMachine esm) : base(enemy, esm)
+    public enemyIdle(EnemyMovementSM stateMachine) : base("Idle", stateMachine)
     {
+        sm = stateMachine;
     }
+
+    private EnemyMovementSM sm;
 
     public override void Enter()
     {
         base.Enter();
     }
 
-    public override void Exit()
-    {
-        base.Exit();
-    }
-
-    public override void HandleInput()
-    {
-        base.HandleInput();
-    }
-
     public override void UpdateLogic()
     {
-        enemy.AttackPlayer();
         base.UpdateLogic();
-    }
 
-    public override void UpdatePhysics()
-    {
-        base.UpdatePhysics();
+        float closeDist = 1f;
+
+        float dist = Vector3.Distance(sm.enemy.transform.position, sm.target.position);
+
+        if (dist < closeDist && sm.timer > 0)
+        {
+            sm.timer = 5;
+            stateMachine.ChangeState(sm.attackingState);
+            sm.anim.SetBool("attacking", true);
+        }
     }
 }

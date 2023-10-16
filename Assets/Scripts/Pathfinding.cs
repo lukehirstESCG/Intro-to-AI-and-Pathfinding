@@ -20,7 +20,7 @@ public class Pathfinding : MonoBehaviour
         }
     }
 
-    void GoToNextPoint()
+    public void GoToNextPoint()
     {
         if (points.Length == 0)
         {
