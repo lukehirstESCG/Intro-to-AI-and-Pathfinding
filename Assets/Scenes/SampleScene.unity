@@ -201,6 +201,9 @@ MonoBehaviour:
   rotationSpeed: 0
   Player: {fileID: 221103163}
   rotation: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
+>>>>>>> parent of e9930df (...)
+=======
 >>>>>>> parent of e9930df (...)
 --- !u!143 &221103160
 CharacterController:
@@ -322,8 +325,12 @@ MonoBehaviour:
   anim: {fileID: 262610191}
   agent: {fileID: 262610189}
 <<<<<<< HEAD
+<<<<<<< HEAD
   targetDist: 0
   esm: {fileID: 0}
+=======
+  targetDistance: 0
+>>>>>>> parent of e9930df (...)
 =======
   targetDistance: 0
 >>>>>>> parent of e9930df (...)
