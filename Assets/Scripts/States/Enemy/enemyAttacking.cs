@@ -61,6 +61,7 @@ public class enemyAttacking : BaseState
             {
                 sm.timer = 0;
                 sm.agent.isStopped = false;
+                pf.GoToNextPoint();
                 sm.anim.SetBool("attacking", false);
             }
 
