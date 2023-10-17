@@ -11,7 +11,7 @@ public class EnemyMovementSM : StateMachine
     public Animator anim;
     public NavMeshAgent agent;
     public float targetDist;
-    public float timer;
+    public float timer = 5;
     public Pathfinding pf;
 
     [HideInInspector]
