@@ -27,11 +27,14 @@ public class EnemyMovementSM : StateMachine
     public enemyIdle idleState;
     [HideInInspector]
     public enemyAttacking attackingState;
+    [HideInInspector]
+    public enemyWalking walkingState;
 
     private void Awake()
     {
         idleState = new enemyIdle(this);
         attackingState = new enemyAttacking(this, pf);
+        walkingState = new enemyWalking(this);
     }
 
     protected override BaseState GetInitialState()

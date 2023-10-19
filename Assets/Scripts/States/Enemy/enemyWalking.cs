@@ -19,7 +19,5 @@ public class enemyWalking : BaseState
     public override void UpdateLogic()
     {
         base.UpdateLogic();
-
-        
     }
 }

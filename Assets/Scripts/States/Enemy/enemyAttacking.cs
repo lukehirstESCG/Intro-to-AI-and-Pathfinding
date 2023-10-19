@@ -33,7 +33,6 @@ public class enemyAttacking : BaseState
                 sm.timer = 0;
                 stateMachine.ChangeState(sm.idleState);
                 sm.anim.SetBool("attacking", false);
-                sm.anim.SetBool("walk", true);
                 sm.attacked = true;
                 Debug.Log("IDLE!");
             }
@@ -43,7 +42,6 @@ public class enemyAttacking : BaseState
                 sm.ResetTimer();
                 stateMachine.ChangeState(sm.idleState);
                 sm.anim.SetBool("attacking", false);
-                sm.anim.SetBool("walk", true);
                 sm.attacked = false;
                 Debug.Log("IDLE!");
             }
@@ -89,7 +87,6 @@ public class enemyAttacking : BaseState
                 sm.attacked = true;
                 sm.agent.isStopped = true;
                 sm.anim.SetBool("attacking", true);
-                sm.anim.SetBool("walk", true);
             }
 
         }

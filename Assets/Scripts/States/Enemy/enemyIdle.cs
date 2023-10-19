@@ -13,6 +13,7 @@ public class enemyIdle : BaseState
     {
         base.Enter();
         sm.ResetTimer();
+        sm.attacked = false;
     }
 
     public override void UpdateLogic()
