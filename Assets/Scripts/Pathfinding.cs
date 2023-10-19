@@ -9,7 +9,8 @@ public class Pathfinding : MonoBehaviour
 
     void Start()
     {
-        agent = GetComponent<NavMeshAgent>();    
+        agent = GetComponent<NavMeshAgent>();
+        agent.acceleration = 4;
     }
 
     private void FixedUpdate()
