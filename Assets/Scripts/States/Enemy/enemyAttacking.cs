@@ -27,9 +27,26 @@ public class enemyAttacking : BaseState
         // If the player is more then 2 m away or if the timer is zero.
         if (sm.targetDist > 2 || sm.timer <= 0)
         {
-            sm.timer = 0;
-            stateMachine.ChangeState(sm.idleState);
-            sm.anim.SetBool("attacking", false);
+            // Initial attack.
+            if (sm.attacked != true)
+            {
+                sm.timer = 0;
+                stateMachine.ChangeState(sm.idleState);
+                sm.anim.SetBool("attacking", false);
+                sm.anim.SetBool("walk", true);
+                sm.attacked = true;
+                Debug.Log("IDLE!");
+            }
+            // The next attack.
+            else if (sm.attacked == true)
+            {
+                sm.ResetTimer();
+                stateMachine.ChangeState(sm.idleState);
+                sm.anim.SetBool("attacking", false);
+                sm.anim.SetBool("walk", true);
+                sm.attacked = false;
+                Debug.Log("IDLE!");
+            }
         }
     }
 
@@ -40,31 +57,40 @@ public class enemyAttacking : BaseState
         // Move the agent to the target destination.
         sm.agent.SetDestination(sm.target.position);
 
-        float distToplayer = Vector3.Distance(sm.enemy.transform.position, sm.target.position);
+        sm.targetDist = Vector3.Distance(sm.enemy.transform.position, sm.target.transform.position);
 
         float closeDist = 1;
 
         // Is the enemy next to the player?
-        if (distToplayer < closeDist)
+        if (sm.targetDist < closeDist)
         {
             sm.agent.SetDestination(sm.transform.position);
 
             // Look at the player.
             sm.enemy.transform.LookAt(sm.target);
             sm.agent.isStopped = true;
+            sm.anim.SetBool("walk", false);
 
             sm.targetDist = 0;
 
             sm.timer -= Time.deltaTime;
 
-            if (sm.timer <= 0)
+            if (sm.timer <= 0 && sm.attacked == true)
             {
                 sm.timer = 0;
                 sm.agent.isStopped = false;
                 pf.GoToNextPoint();
                 sm.anim.SetBool("attacking", false);
+                sm.anim.SetBool("walk", true);
+                sm.attacked = false;
             }
-
+            else if (sm.attacked != true)
+            {
+                sm.attacked = true;
+                sm.agent.isStopped = true;
+                sm.anim.SetBool("attacking", true);
+                sm.anim.SetBool("walk", true);
+            }
 
         }
     }

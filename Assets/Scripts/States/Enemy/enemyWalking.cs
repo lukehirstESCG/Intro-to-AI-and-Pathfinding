@@ -2,17 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class enemyWalking : MonoBehaviour
+public class enemyWalking : BaseState
 {
-    // Start is called before the first frame update
-    void Start()
+    public enemyWalking(EnemyMovementSM stateMachine) : base("Walking", stateMachine)
     {
-        
+        sm = stateMachine;
     }
 
-    // Update is called once per frame
-    void Update()
+    private EnemyMovementSM sm;
+
+    public override void Enter()
     {
+        base.Enter();
+    }
+
+    public override void UpdateLogic()
+    {
+        base.UpdateLogic();
+
         
     }
 }
