@@ -170,7 +170,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4483670266274298099, guid: b5ed92c5066c8ee47bac7c04777b03e2, type: 3}
       propertyPath: m_IsTrigger
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5750908166437675897, guid: b5ed92c5066c8ee47bac7c04777b03e2, type: 3}
       propertyPath: m_Name
@@ -279,7 +279,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 0
+  m_StoppingDistance: 0.25
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -367,7 +367,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4483670266274298099, guid: b5ed92c5066c8ee47bac7c04777b03e2, type: 3}
       propertyPath: m_IsTrigger
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5750908166437675897, guid: b5ed92c5066c8ee47bac7c04777b03e2, type: 3}
       propertyPath: m_Name
@@ -1092,7 +1092,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4483670266274298099, guid: b5ed92c5066c8ee47bac7c04777b03e2, type: 3}
       propertyPath: m_IsTrigger
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5750908166437675897, guid: b5ed92c5066c8ee47bac7c04777b03e2, type: 3}
       propertyPath: m_Name
@@ -2887,7 +2887,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4483670266274298099, guid: b5ed92c5066c8ee47bac7c04777b03e2, type: 3}
       propertyPath: m_IsTrigger
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5750908166437675897, guid: b5ed92c5066c8ee47bac7c04777b03e2, type: 3}
       propertyPath: m_Name
@@ -3232,7 +3232,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4483670266274298099, guid: b5ed92c5066c8ee47bac7c04777b03e2, type: 3}
       propertyPath: m_IsTrigger
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5750908166437675897, guid: b5ed92c5066c8ee47bac7c04777b03e2, type: 3}
       propertyPath: m_Name
